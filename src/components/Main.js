@@ -15,7 +15,7 @@ const Main = props => {
             <Route
                 path={[`/${aboutMePage}`,`/${aboutMePage}/:hero`]}
                 exact
-                render={(routerProps) => <AboutMe changeCharacter={props.changeCharacter} {...routerProps}/>}
+                render={(routerProps) => <AboutMe charName={props.charName} changeCharacter={props.changeCharacter} {...routerProps}/>}
             />
             <Route path={`/${starWarsPage}`} exact component={StarWars}/>
             <Route path={`/${contactPage}`} exact={true}><Contact/></Route>

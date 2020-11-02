@@ -10,7 +10,7 @@ class AboutMe extends React.Component {
     }
 
     componentDidMount() {
-        const key = this.props.match.params.hero||'luke';
+        const key = this.props.match.params.hero||this.props.charName||'luke';
         let hero = JSON.parse(localStorage.getItem(key));
         if (!hero || (Date.now() - hero.time) > periodMonth) {
             fetch(characters[key].url)
