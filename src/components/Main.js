@@ -7,15 +7,22 @@ import {aboutMePage, contactPage, homePage, starWarsPage} from "../utils/Constan
 import ErrorPage from "./ErrorPage";
 import {Route, Switch} from 'react-router-dom';
 
-//component={AboutMe}
 const Main = props => {
     return (
         <Switch>
-            <Route path={['/', `/${homePage}`]} exact component={Home}/>
+            <Route path={['/', `/${homePage}`, `/${homePage}/:hero`]}
+                   exact
+                   render={({match}) => <Home charName={props.charName}
+                                              changeCharacter={props.changeCharacter}
+                                              match={match} />
+                          }
+                   />
             <Route
                 path={[`/${aboutMePage}`,`/${aboutMePage}/:hero`]}
                 exact
-                render={(routerProps) => <AboutMe charName={props.charName} changeCharacter={props.changeCharacter} {...routerProps}/>}
+                render={(routerProps) => <AboutMe charName={props.charName}
+                                                  changeCharacter={props.changeCharacter}
+                                                  match={routerProps.match} />}
             />
             <Route path={`/${starWarsPage}`} exact component={StarWars}/>
             <Route path={`/${contactPage}`} exact={true}><Contact/></Route>

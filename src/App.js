@@ -19,7 +19,7 @@ class App extends React.Component {
     render() {
         return (
             <div className='container-fluid'>
-                <Header character={this.state.character}/>
+                <Header charName={this.state.character}/>
                 <Main charName={this.state.character} changeCharacter={this.changeCharacter}/>
                 <Footer/>
             </div>

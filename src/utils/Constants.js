@@ -9,8 +9,6 @@ import friend8 from "../Images/friend8.jpg";
 import friend9 from "../Images/friend9.jpg";
 import friend0 from "../Images/main.jpg";
 
-export const friends = [friend1, friend2, friend3, friend4, friend5, friend6,
-    friend7, friend8, friend9];
 export const homePage = 'home';
 export const contactPage = 'contact';
 export const aboutMePage = 'about_me';
@@ -73,3 +71,5 @@ export const characters = {
         url: `${base_url+version}/peoples/0`
     }
 };
+
+export const friends = Object.keys(characters);
