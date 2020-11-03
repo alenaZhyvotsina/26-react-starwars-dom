@@ -1,16 +1,23 @@
 import React from 'react';
 import styles from '../css_modules/aboutMe.module.css';
+import {Redirect} from 'react-router-dom';
 
-import {base_url, characters, friends, periodMonth, version} from "../utils/Constants";
+import {characters, defaultHero, friends, periodMonth} from "../utils/Constants";
 
 class AboutMe extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            ifError: false
+        }
     }
 
     componentDidMount() {
-        const key = this.props.match.params.hero||'luke';
+        let key = this.props.match.params.hero;
+        if(!friends.includes(key)) {
+            key = defaultHero;
+            this.setState({ifError: true});
+        }
         let hero = JSON.parse(localStorage.getItem(key));
         if (!hero || (Date.now() - hero.time) > periodMonth) {
             fetch(characters[key].url)
@@ -45,6 +52,9 @@ class AboutMe extends React.Component {
 
 
     render() {
+        if(this.state.ifError){
+            return <Redirect to={'/error'}/>
+        }
         return (
             <div>
                 {(this.state.hero) &&

@@ -8,7 +8,11 @@ const DreamTeam = props => {
             <h2 className="col-12 text-center">Dream Team</h2>
             {friends
                 .filter(item => item !== props.charName)
-                .map((item, index) => <Friend picture={characters[item].img} key={index} pos={index + 1}/>)
+                .map((item, index) =>
+                    <Friend picture={characters[item].img} key={index} pos={index + 1}
+                                charName={item}
+                                />
+                    )
             }
         </section>
     );
